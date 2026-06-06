@@ -38,12 +38,18 @@ Then visit <http://localhost:8000>.
 
 ## Milestones
 
-- **M1** Skeleton & shared layout *(current)*
+- **M1** Skeleton & shared layout ✓
 - **M2** Static page content
 - **M3** Contact form + success page
 - **M4** Newsletter signup (Brevo)
-- **M5** GDPR: consent banner + GTM gating
+- **M5** GDPR: consent banner ✓ (GTM gating deferred)
 - **M6** Privacy policy
+
+## Cookies set by this site
+
+| Name | Purpose | Lifetime |
+|---|---|---|
+| `cdc_consent` | Stores cookie banner decision (`accepted` / `declined`) so the banner is shown only on first visit | 1 year |
 
 ## Placeholders to swap before launch
 
