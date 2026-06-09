@@ -1,48 +1,51 @@
 (function () {
+  const MIN_NAME = 4;
   const MIN_WHY = 100;
 
   document.querySelectorAll('form[data-multi-step]').forEach(setupForm);
 
   function setupForm(form) {
     const steps = form.querySelectorAll('.form-step');
+    const name = form.querySelector('input[name="name"]');
     const why = form.querySelector('textarea[name="why"]');
-    const counter = form.querySelector('[data-counter="why"]');
+    const nameError = form.querySelector('[data-error="name"]');
     const whyError = form.querySelector('[data-error="why"]');
     const nextBtn = form.querySelector('[data-next]');
     const prevBtn = form.querySelector('[data-prev]');
 
     setStep(1);
 
-    if (why && counter) {
-      const updateCounter = () => {
-        const len = why.value.trim().length;
-        counter.textContent = String(len);
-        counter.classList.toggle('ok', len >= MIN_WHY);
-        if (len >= MIN_WHY && whyError) whyError.hidden = true;
-      };
-      why.addEventListener('input', updateCounter);
-      updateCounter();
+    if (name && nameError) {
+      name.addEventListener('input', () => {
+        if (name.value.trim().length >= MIN_NAME) nameError.hidden = true;
+      });
+    }
+    if (why && whyError) {
+      why.addEventListener('input', () => {
+        if (why.value.trim().length >= MIN_WHY) whyError.hidden = true;
+      });
     }
 
     if (nextBtn) {
       nextBtn.addEventListener('click', () => {
-        const name = form.querySelector('input[name="name"]');
-        if (name && !name.value.trim()) {
-          name.reportValidity();
-          return;
+        let bad = null;
+        if (name && name.value.trim().length < MIN_NAME) {
+          if (nameError) nameError.hidden = false;
+          bad = bad || name;
         }
         if (why && why.value.trim().length < MIN_WHY) {
           if (whyError) whyError.hidden = false;
-          why.focus();
+          bad = bad || why;
+        }
+        if (bad) {
+          bad.focus();
           return;
         }
         setStep(2);
       });
     }
 
-    if (prevBtn) {
-      prevBtn.addEventListener('click', () => setStep(1));
-    }
+    if (prevBtn) prevBtn.addEventListener('click', () => setStep(1));
 
     form.addEventListener('submit', (e) => {
       const missingRadio = ['scamorza', 'first_time'].find(
@@ -64,8 +67,6 @@
       steps.forEach((s) => {
         s.hidden = Number(s.dataset.step) !== n;
       });
-      const current = form.querySelector('[data-current]');
-      if (current) current.textContent = String(n);
     }
   }
 })();
