@@ -1,47 +1,123 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>About — Cute Dog Content</title>
-    <meta
-      name="description"
-      content="About Cute Dog Content — placeholder description, to be replaced."
-    />
-    <link rel="stylesheet" href="/css/styles.css" />
-    <script src="/js/consent.js" defer></script>
-  </head>
-  <body>
-    <header class="site-header">
-      <div class="container">
-        <a href="/" class="site-logo">Cute Dog Content</a>
-        <nav class="site-nav" aria-label="Primary">
-          <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/about.html" aria-current="page">About</a></li>
-            <li><a href="/patreon.html">Patreon</a></li>
-            <li><a href="/contact.html">Contact</a></li>
-          </ul>
-        </nav>
-      </div>
-    </header>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>About Lynch — the deeply dramatic dog</title>
+<meta name="description" content="Meet Lynch — from the streets of Brovary to endless relaxation, wealth and glory." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Patrick+Hand&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
 
-    <main>
-      <div class="container">
-        <h1>About us</h1>
-        <p class="lead">Placeholder intro — one sentence about the brand.</p>
-        <p>
-          Placeholder body — the story behind Cute Dog Content goes here.
-          Replace this paragraph with the real about text later.
-        </p>
-      </div>
-    </main>
+<header>
+  <div class="wrap nav">
+    <a href="/" class="logo">Lynch<span class="dot"></span></a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="/">Home</a>
+      <a href="/about.html" aria-current="page">About</a>
+      <a href="/patreon.html">Patreon</a>
+      <a href="/contact.html">Contact</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="/contact.html" class="btn btn-primary">Get Dog Photo<span class="arr">→</span></a>
+    </div>
+  </div>
+</header>
 
-    <footer class="site-footer">
-      <div class="container">
-        <span>&copy; Cute Dog Content</span>
+<main>
+  <section class="page-hero" style="background:var(--paper-2);">
+    <div class="wrap">
+      <div class="eyebrow">LEARN ABOUT LYNCH (NOT DAVID)</div>
+      <h1 class="display page-hero-h1">How can you not like this deeply dramatic dog?</h1>
+      <p class="sub">From the streets of Brovary to endless relaxation, wealth and glory.</p>
+    </div>
+  </section>
+
+  <section class="intro" style="background:var(--paper);">
+    <div class="wrap intro-grid">
+      <div>
+        <h2 class="display">Meet Lynch.</h2>
+        <p class="lead">He grew up on the streets of Brovary to one day turn his life around to what others see as a dream: <span class="accent">endless relaxation, wealth and glory.</span> But there is also always a space for some drama.</p>
+        <p class="lead">To spread his vibes around, we're launching this website to share the best pictures that represent Lynch-the-dog moods. Each subscriber, with 100% guarantee, gets one picture of Lynch immediately.</p>
+        <div class="intro-actions">
+          <a href="/contact.html" class="btn btn-primary">Get Your Picture<span class="arr">→</span></a>
+        </div>
+      </div>
+      <div class="intro-photo">
+        <div class="tag">known on the streets</div>
+        <img src="/images/dog-photos/lynch-doge.jpg" alt="Lynch posing beside Doge street art" />
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <a href="/" class="logo">Lynch<span class="dot"></span></a>
+        <p class="foot-blurb">A deeply dramatic dog from Brovary, spreading his vibes one postcard at a time.</p>
+      </div>
+      <div class="foot-cols">
+        <div class="foot-col">
+          <h5>Explore</h5>
+          <a href="/">Home</a>
+          <a href="/about.html">About</a>
+          <a href="/patreon.html">Patreon</a>
+          <a href="/contact.html">Contact</a>
+        </div>
+        <div class="foot-col">
+          <h5>The good stuff</h5>
+          <a href="/#gallery">Gallery</a>
+          <a href="/contact.html">Get a photo</a>
+          <a href="/patreon.html">Become a Patron</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Lynch-the-dog. All moods reserved.</span>
+      <div class="legal">
         <a href="/privacy.html">Privacy policy</a>
+        <a href="#" data-cookie-settings>Cookie policy</a>
       </div>
-    </footer>
-  </body>
+    </div>
+  </div>
+</footer>
+
+<div class="cookie-wrap hidden" id="cookieWrap" role="dialog" aria-live="polite" aria-label="Cookie consent">
+  <div class="cookie" id="cookieCard">
+    <div class="ck-text">
+      <h4><span class="paw">🐾</span> Lynch values your privacy</h4>
+      <p>We use cookies to keep the site working, and — with your consent — to understand traffic and show you more of Lynch. Read our <a href="/privacy.html">privacy policy</a>.</p>
+    </div>
+    <div class="ck-actions">
+      <button class="ck-btn ghost" id="ckCustomize">Customize</button>
+      <button class="ck-btn" id="ckReject">Reject all</button>
+      <button class="ck-btn accept" id="ckAccept">Accept all</button>
+    </div>
+    <div class="ck-prefs" id="ckPrefs">
+      <div class="ck-row">
+        <div class="info"><h5>Strictly necessary</h5><p>Required for the site to function. Always on.</p></div>
+        <button class="ck-toggle" role="switch" aria-checked="true" disabled aria-label="Strictly necessary cookies, always on"></button>
+      </div>
+      <div class="ck-row">
+        <div class="info"><h5>Analytics</h5><p>Anonymous stats. Off until you allow it.</p></div>
+        <button class="ck-toggle" role="switch" aria-checked="false" data-cat="analytics" aria-label="Analytics cookies"></button>
+      </div>
+      <div class="ck-row">
+        <div class="info"><h5>Marketing</h5><p>Lets us show Lynch across other sites. Off until you allow it.</p></div>
+        <button class="ck-toggle" role="switch" aria-checked="false" data-cat="marketing" aria-label="Marketing cookies"></button>
+      </div>
+      <div class="ck-prefs-foot">
+        <button class="ck-btn" id="ckSave">Save my choices</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/js/consent.js" defer></script>
+</body>
 </html>
