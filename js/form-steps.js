@@ -143,11 +143,8 @@
         'input[name="first_time"]:checked'
       ).value;
       markSubmitted();
-      if (firstTime !== 'yes') {
-        showFail();
-        return;
-      }
-      openPhotoModal();
+      showFail();
+      if (firstTime === 'yes') openPhotoModal();
     });
 
     function setStep(n) {
