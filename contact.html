@@ -175,6 +175,15 @@
   <canvas class="confetti" id="confettiCanvas" aria-hidden="true"></canvas>
   <button type="button" class="photo-modal-close" data-photo-close aria-label="Close">×</button>
   <img class="photo-modal-img" id="photoModalImg" alt="A photo of Lynch" />
+  <div class="photo-confirm" data-photo-confirm hidden role="alertdialog" aria-label="Confirm close">
+    <div class="photo-confirm-box">
+      <p>Are you sure? You will lost your access to this photo</p>
+      <div class="photo-confirm-actions">
+        <button type="button" class="btn btn-ghost" data-confirm-no>No</button>
+        <button type="button" class="btn btn-primary" data-confirm-yes>Yes</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <script src="js/consent.js" defer></script>

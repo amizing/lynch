@@ -36,19 +36,40 @@
       requestAnimationFrame(() => window.launchConfetti(canvas));
     }
   }
+  function requestClosePhotoModal() {
+    const modal = document.getElementById('photoModal');
+    if (!modal || modal.hidden) return;
+    const confirmEl = modal.querySelector('[data-photo-confirm]');
+    if (confirmEl) confirmEl.hidden = false;
+  }
+  function dismissCloseConfirm() {
+    const modal = document.getElementById('photoModal');
+    if (!modal) return;
+    const confirmEl = modal.querySelector('[data-photo-confirm]');
+    if (confirmEl) confirmEl.hidden = true;
+  }
   function closePhotoModal() {
     const modal = document.getElementById('photoModal');
     if (!modal) return;
+    const confirmEl = modal.querySelector('[data-photo-confirm]');
+    if (confirmEl) confirmEl.hidden = true;
     modal.hidden = true;
     document.body.style.overflow = '';
   }
   document.addEventListener('click', (e) => {
-    if (e.target.closest('[data-photo-close]')) closePhotoModal();
+    if (e.target.closest('[data-confirm-yes]')) { closePhotoModal(); return; }
+    if (e.target.closest('[data-confirm-no]')) { dismissCloseConfirm(); return; }
+    if (e.target.closest('[data-photo-close]')) { requestClosePhotoModal(); return; }
     const modal = document.getElementById('photoModal');
-    if (modal && !modal.hidden && e.target === modal) closePhotoModal();
+    if (modal && !modal.hidden && e.target === modal) requestClosePhotoModal();
   });
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closePhotoModal();
+    if (e.key !== 'Escape') return;
+    const modal = document.getElementById('photoModal');
+    if (!modal || modal.hidden) return;
+    const confirmEl = modal.querySelector('[data-photo-confirm]');
+    if (confirmEl && !confirmEl.hidden) dismissCloseConfirm();
+    else requestClosePhotoModal();
   });
 
   document.querySelectorAll('form[data-multi-step]').forEach(setupForm);
