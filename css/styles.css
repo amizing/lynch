@@ -192,6 +192,57 @@ section { padding: 104px 0; }
 .gdpr a { color: var(--accent-deep); font-weight: 600; }
 .form-card .btn-primary { width: 100%; justify-content: center; }
 
+/* ---------- Multi-step form ---------- */
+.form-card .step-indicator {
+  display: flex; align-items: center; gap: 10px;
+  margin: 0 0 22px; font-size: 13px; color: var(--ink-soft);
+  font-weight: 600; letter-spacing: .06em; text-transform: uppercase;
+}
+.form-card .step-indicator .bar { flex: 1; height: 3px; background: var(--line); border-radius: 2px; overflow: hidden; position: relative; }
+.form-card .step-indicator .bar::after {
+  content: ""; position: absolute; inset: 0 50% 0 0; background: var(--accent);
+  transition: inset .25s ease;
+}
+.form-card[data-step="2"] .step-indicator .bar::after { inset: 0 0 0 0; }
+.form-step[hidden] { display: none; }
+.field-label {
+  display: block; font-size: 13px; font-weight: 600; letter-spacing: .06em;
+  text-transform: uppercase; color: var(--ink-soft); margin-bottom: 9px;
+}
+.radio-row { display: flex; flex-wrap: wrap; gap: 10px; }
+.radio-pill { position: relative; cursor: pointer; }
+.radio-pill input {
+  position: absolute; opacity: 0; pointer-events: none;
+}
+.radio-pill span {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 78px; padding: 11px 20px; border-radius: 30px;
+  background: var(--paper); border: 1.5px solid var(--line);
+  font-size: 15px; font-weight: 500; color: var(--ink);
+  transition: .15s;
+}
+.radio-pill:hover span { border-color: var(--accent); }
+.radio-pill input:checked + span {
+  background: var(--accent); border-color: var(--accent); color: #fff;
+  box-shadow: 0 6px 16px -8px var(--accent);
+}
+.radio-pill input:focus-visible + span { box-shadow: 0 0 0 4px var(--accent-soft); }
+.field-meta {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 6px; font-size: 13px; color: var(--ink-soft);
+}
+.field-meta .counter.ok { color: var(--accent-deep); font-weight: 600; }
+.field-error { color: var(--accent-deep); font-size: 13px; margin: 6px 0 0; font-weight: 500; }
+.field-error[hidden] { display: none; }
+.step-actions { display: flex; gap: 12px; align-items: center; margin-top: 4px; }
+.step-actions .btn-ghost { padding: 14px 22px; }
+.step-actions .btn-primary { flex: 1; justify-content: center; }
+.legal-line {
+  font-size: 13px; color: var(--ink-soft); line-height: 1.5;
+  margin: 4px 0 22px;
+}
+.legal-line a { color: var(--accent-deep); font-weight: 600; }
+
 /* ---------- Patreon (cinematic full-bleed) ---------- */
 .patreon-band {
   position: relative; border-radius: 20px; overflow: hidden;
