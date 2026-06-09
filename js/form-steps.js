@@ -2,7 +2,7 @@
   const MIN_NAME = 4;
   const MIN_WHY = 100;
   const COOKIE = 'lynch_submitted';
-  const PHOTOS = [
+  const FALLBACK_PHOTOS = [
     'images/dog-photos/lynch-hero.jpg',
     'images/dog-photos/lynch-balcony.jpg',
     'images/dog-photos/lynch-cafe.jpg',
@@ -13,6 +13,14 @@
     'images/dog-photos/lynch-doge.jpg',
     'images/dog-photos/lynch-patron.jpg',
   ];
+  let PHOTOS = FALLBACK_PHOTOS;
+
+  fetch('images/exclusive/photos.json')
+    .then((r) => (r.ok ? r.json() : null))
+    .then((list) => {
+      if (Array.isArray(list) && list.length) PHOTOS = list;
+    })
+    .catch(() => {});
 
   function hasSubmitted() {
     return document.cookie

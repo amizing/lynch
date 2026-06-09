@@ -1,0 +1,47 @@
+name: Update exclusive photos manifest
+
+on:
+  push:
+    paths:
+      - 'images/exclusive/**'
+
+permissions:
+  contents: write
+
+jobs:
+  manifest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Regenerate photos.json
+        run: |
+          set -euo pipefail
+          cd images/exclusive
+          shopt -s nullglob nocaseglob
+          files=(*.jpg *.jpeg *.png *.webp *.gif)
+          shopt -u nocaseglob
+          {
+            echo '['
+            first=1
+            for f in "${files[@]}"; do
+              base="$(basename "$f")"
+              if [ "$first" -eq 1 ]; then first=0; else printf ',\n'; fi
+              printf '  "images/exclusive/%s"' "$base"
+            done
+            printf '\n]\n'
+          } > photos.json
+          echo "Generated manifest:" && cat photos.json
+
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add images/exclusive/photos.json
+          if git diff --cached --quiet; then
+            echo "Manifest unchanged."
+            exit 0
+          fi
+          git commit -m "chore: auto-update exclusive photos manifest"
+          git push
