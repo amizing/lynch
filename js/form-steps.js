@@ -2,23 +2,12 @@
   const MIN_NAME = 4;
   const MIN_WHY = 100;
   const COOKIE = 'lynch_submitted';
-  const FALLBACK_PHOTOS = [
-    'images/dog-photos/lynch-hero.jpg',
-    'images/dog-photos/lynch-balcony.jpg',
-    'images/dog-photos/lynch-cafe.jpg',
-    'images/dog-photos/lynch-towel.jpg',
-    'images/dog-photos/lynch-zen.jpg',
-    'images/dog-photos/lynch-bench.jpg',
-    'images/dog-photos/lynch-bricks.jpg',
-    'images/dog-photos/lynch-doge.jpg',
-    'images/dog-photos/lynch-patron.jpg',
-  ];
-  let PHOTOS = FALLBACK_PHOTOS;
+  let PHOTOS = [];
 
   fetch('images/exclusive/photos.json')
     .then((r) => (r.ok ? r.json() : null))
     .then((list) => {
-      if (Array.isArray(list) && list.length) PHOTOS = list;
+      if (Array.isArray(list)) PHOTOS = list;
     })
     .catch(() => {});
 
@@ -36,7 +25,7 @@
     const modal = document.getElementById('photoModal');
     const img = document.getElementById('photoModalImg');
     const canvas = document.getElementById('confettiCanvas');
-    if (!modal || !img) return;
+    if (!modal || !img || !PHOTOS.length) return;
     img.src = PHOTOS[Math.floor(Math.random() * PHOTOS.length)];
     modal.hidden = false;
     document.body.style.overflow = 'hidden';
