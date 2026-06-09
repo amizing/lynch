@@ -192,6 +192,108 @@ section { padding: 104px 0; }
 .gdpr a { color: var(--accent-deep); font-weight: 600; }
 .form-card .btn-primary { width: 100%; justify-content: center; }
 
+/* ---------- Multi-step form ---------- */
+.form-step[hidden] { display: none; }
+.field-label {
+  display: block; font-size: 13px; font-weight: 600; letter-spacing: .06em;
+  text-transform: uppercase; color: var(--ink-soft); margin-bottom: 9px;
+}
+.radio-row {
+  display: flex; flex-direction: row; flex-wrap: nowrap;
+  gap: 10px; align-items: center;
+}
+.radio-pill {
+  display: inline-flex; flex: 0 0 auto; position: relative; cursor: pointer;
+}
+.radio-pill input {
+  position: absolute; opacity: 0; pointer-events: none;
+  width: 1px; height: 1px;
+}
+.radio-pill span {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 78px; padding: 11px 20px; border-radius: 30px;
+  background: var(--paper); border: 1.5px solid var(--line);
+  font-size: 15px; font-weight: 500; color: var(--ink);
+  transition: .15s; white-space: nowrap;
+}
+.radio-pill:hover span { border-color: var(--accent); }
+.radio-pill input:checked + span {
+  background: var(--accent); border-color: var(--accent); color: #fff;
+  box-shadow: 0 6px 16px -8px var(--accent);
+}
+.radio-pill input:focus-visible + span { box-shadow: 0 0 0 4px var(--accent-soft); }
+.field-error { color: var(--accent-deep); font-size: 13px; margin: 6px 0 0; font-weight: 500; }
+.field-error[hidden] { display: none; }
+.step-actions { display: flex; gap: 12px; align-items: center; margin-top: 4px; }
+.step-actions .btn-ghost { padding: 14px 22px; }
+.step-actions .btn-primary { flex: 1; justify-content: center; }
+.legal-line {
+  font-size: 13px; color: var(--ink-soft); line-height: 1.5;
+  margin: 4px 0 22px;
+}
+.legal-line a { color: var(--accent-deep); font-weight: 600; }
+.form-fail { text-align: center; padding: 8px 4px 4px; }
+.form-fail .fail-copy {
+  font-size: 18px; color: var(--ink); line-height: 1.5;
+  margin: 0 0 26px; max-width: 38ch; margin-left: auto; margin-right: auto;
+}
+.form-fail .btn { width: 100%; justify-content: center; }
+
+/* ---------- Photo modal ---------- */
+.photo-modal {
+  position: fixed; inset: 0; z-index: 100;
+  background: rgba(18, 14, 10, 0.82);
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px; animation: photoModalIn .25s ease;
+}
+.photo-modal[hidden] { display: none; }
+.photo-modal .confetti {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  pointer-events: none; z-index: 2;
+}
+.photo-modal-img {
+  max-width: 90vw; max-height: 90vh; width: auto; height: auto;
+  object-fit: contain; border-radius: 18px;
+  box-shadow: 0 30px 80px -20px rgba(0,0,0,.7);
+  position: relative; z-index: 1;
+  animation: photoModalPop .4s cubic-bezier(.2,.7,.2,1.2);
+}
+.photo-modal-close {
+  position: absolute; top: 22px; right: 24px; z-index: 3;
+  width: 44px; height: 44px; border-radius: 50%;
+  background: #fff; color: var(--ink); border: none;
+  font-size: 28px; font-weight: 400; line-height: 1;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 8px 22px -8px rgba(0,0,0,.5);
+  transition: transform .14s, background .14s;
+}
+.photo-modal-close:hover { transform: scale(1.07); background: var(--paper); }
+@keyframes photoModalIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes photoModalPop {
+  from { opacity: 0; transform: scale(.7); }
+  to { opacity: 1; transform: scale(1); }
+}
+.photo-confirm {
+  position: absolute; inset: 0; z-index: 4;
+  background: rgba(18, 14, 10, 0.55);
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px; animation: photoModalIn .15s ease;
+}
+.photo-confirm[hidden] { display: none; }
+.photo-confirm-box {
+  background: var(--card); border-radius: 16px; padding: 26px 26px 22px;
+  max-width: 360px; width: 100%; text-align: center;
+  box-shadow: 0 24px 60px -20px rgba(0,0,0,.55);
+  animation: photoModalPop .22s cubic-bezier(.2,.7,.2,1.2);
+}
+.photo-confirm-box p {
+  margin: 0 0 20px; color: var(--ink); font-size: 16px; line-height: 1.5;
+}
+.photo-confirm-actions {
+  display: flex; gap: 10px; justify-content: center;
+}
+.photo-confirm-actions .btn { padding: 12px 26px; font-size: 15px; }
+
 /* ---------- Patreon (cinematic full-bleed) ---------- */
 .patreon-band {
   position: relative; border-radius: 20px; overflow: hidden;

@@ -27,7 +27,6 @@ Then visit <http://localhost:8000>.
 ├── about.html         # About us
 ├── patreon.html       # Patreon landing
 ├── contact.html       # Contact form
-├── success.html       # Contact success (cookie-gated dog photo)
 ├── privacy.html       # Privacy policy
 ├── css/styles.css     # Shared stylesheet
 ├── js/                # Page scripts (added in later milestones)

@@ -1,7 +1,7 @@
 # GDPR & Cookie Consent — QA Test Plan
 
 **Audience:** QA / privacy reviewer running pre-launch validation when the site is fully live with GTM installed.
-**Scope:** Lynch website (`index.html`, `about.html`, `contact.html`, `patreon.html`, `privacy.html`, `success.html`), the cookie banner, the consent persistence layer (`js/consent.js`), and the downstream GTM → GA4 + Mixpanel pipeline.
+**Scope:** Lynch website (`index.html`, `about.html`, `contact.html`, `patreon.html`, `privacy.html`), the cookie banner, the consent persistence layer (`js/consent.js`), and the downstream GTM → GA4 + Mixpanel pipeline.
 **Assumed final state:**
 - GTM container snippet has been pasted into the `<!-- TODO(marketing): paste GTM container snippet ... -->` slot in every page `<head>`.
 - GA4 configuration tag and Mixpanel tag are configured in GTM with consent gating (`analytics_storage` → GA4; `analytics_storage` or `ad_storage` as appropriate → Mixpanel).
