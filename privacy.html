@@ -3,6 +3,24 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- Google Consent Mode v2 — default-deny until the user chooses via the cookie banner. -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'denied',
+    functionality_storage: 'granted',
+    security_storage: 'granted',
+    wait_for_update: 500
+  });
+</script>
+<!-- TODO(marketing): paste GTM container snippet below once provisioned. It will inherit the default-denied state set above; user choices flow through js/consent.js → gtag('consent','update',...). -->
+<!--
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
+-->
 <title>Privacy policy — Lynch</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -43,7 +61,13 @@
       <p>When you submit the contact form we collect your first name, email address, and any message you provide. We use this solely to send you one dog photo and, if you consent, occasional emails about Lynch.</p>
 
       <h2 class="display" style="font-size:30px;margin:48px 0 16px;">Cookies</h2>
-      <p>We use strictly necessary cookies to remember your privacy choice. With your consent we may also use analytics cookies to understand how people use the site. We do not use advertising or tracking cookies without explicit opt-in. You can change your cookie preferences at any time via the <a href="#" data-cookie-settings style="color:var(--accent-deep);font-weight:600;">Cookie settings</a> link.</p>
+      <p>We group cookies into three categories:</p>
+      <ul>
+        <li><strong>Strictly necessary</strong> — always on. Used only to remember your privacy choice (stored locally in your browser). No tracking.</li>
+        <li><strong>Analytics</strong> — off by default. With your consent we use Google Analytics (loaded via Google Tag Manager) to understand which pages people enjoy. We may also use Mixpanel for product analytics.</li>
+        <li><strong>Marketing</strong> — off by default. With your consent we may measure campaign performance and show Lynch on other sites.</li>
+      </ul>
+      <p>Analytics and marketing cookies are loaded with <em>Google Consent Mode v2</em>: until you opt in, no identifiers or personal data are sent. If you opt in and later change your mind, any analytics cookies already set in your browser are cleared automatically. We will ask again after 6 months, or sooner if our cookie policy materially changes. You can change your choice at any time via the <a href="#" data-cookie-settings style="color:var(--accent-deep);font-weight:600;">Cookie settings</a> link.</p>
 
       <h2 class="display" style="font-size:30px;margin:48px 0 16px;">Your rights (GDPR)</h2>
       <ul>
