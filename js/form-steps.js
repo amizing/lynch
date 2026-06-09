@@ -2,6 +2,17 @@
   const MIN_NAME = 4;
   const MIN_WHY = 100;
   const COOKIE = 'lynch_submitted';
+  const PHOTOS = [
+    'images/dog-photos/lynch-hero.jpg',
+    'images/dog-photos/lynch-balcony.jpg',
+    'images/dog-photos/lynch-cafe.jpg',
+    'images/dog-photos/lynch-towel.jpg',
+    'images/dog-photos/lynch-zen.jpg',
+    'images/dog-photos/lynch-bench.jpg',
+    'images/dog-photos/lynch-bricks.jpg',
+    'images/dog-photos/lynch-doge.jpg',
+    'images/dog-photos/lynch-patron.jpg',
+  ];
 
   function hasSubmitted() {
     return document.cookie
@@ -12,6 +23,33 @@
     document.cookie =
       COOKIE + '=1; max-age=' + 60 * 60 * 24 * 365 + '; path=/; SameSite=Lax';
   }
+
+  function openPhotoModal() {
+    const modal = document.getElementById('photoModal');
+    const img = document.getElementById('photoModalImg');
+    const canvas = document.getElementById('confettiCanvas');
+    if (!modal || !img) return;
+    img.src = PHOTOS[Math.floor(Math.random() * PHOTOS.length)];
+    modal.hidden = false;
+    document.body.style.overflow = 'hidden';
+    if (canvas && typeof window.launchConfetti === 'function') {
+      requestAnimationFrame(() => window.launchConfetti(canvas));
+    }
+  }
+  function closePhotoModal() {
+    const modal = document.getElementById('photoModal');
+    if (!modal) return;
+    modal.hidden = true;
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('click', (e) => {
+    if (e.target.closest('[data-photo-close]')) closePhotoModal();
+    const modal = document.getElementById('photoModal');
+    if (modal && !modal.hidden && e.target === modal) closePhotoModal();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closePhotoModal();
+  });
 
   document.querySelectorAll('form[data-multi-step]').forEach(setupForm);
 
@@ -79,17 +117,16 @@
         return;
       }
 
+      e.preventDefault();
       const firstTime = form.querySelector(
         'input[name="first_time"]:checked'
       ).value;
+      markSubmitted();
       if (firstTime !== 'yes') {
-        e.preventDefault();
-        markSubmitted();
         showFail();
         return;
       }
-
-      markSubmitted();
+      openPhotoModal();
     });
 
     function setStep(n) {
