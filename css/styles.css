@@ -232,6 +232,12 @@ section { padding: 104px 0; }
   margin: 4px 0 22px;
 }
 .legal-line a { color: var(--accent-deep); font-weight: 600; }
+.form-fail { text-align: center; padding: 8px 4px 4px; }
+.form-fail .fail-copy {
+  font-size: 18px; color: var(--ink); line-height: 1.5;
+  margin: 0 0 26px; max-width: 38ch; margin-left: auto; margin-right: auto;
+}
+.form-fail .btn { width: 100%; justify-content: center; }
 
 /* ---------- Patreon (cinematic full-bleed) ---------- */
 .patreon-band {

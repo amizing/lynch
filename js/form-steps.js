@@ -1,17 +1,34 @@
 (function () {
   const MIN_NAME = 4;
   const MIN_WHY = 100;
+  const COOKIE = 'lynch_submitted';
+
+  function hasSubmitted() {
+    return document.cookie
+      .split(';')
+      .some((c) => c.trim().startsWith(COOKIE + '='));
+  }
+  function markSubmitted() {
+    document.cookie =
+      COOKIE + '=1; max-age=' + 60 * 60 * 24 * 365 + '; path=/; SameSite=Lax';
+  }
 
   document.querySelectorAll('form[data-multi-step]').forEach(setupForm);
 
   function setupForm(form) {
     const steps = form.querySelectorAll('.form-step');
+    const fail = form.querySelector('[data-form-fail]');
     const name = form.querySelector('input[name="name"]');
     const why = form.querySelector('textarea[name="why"]');
     const nameError = form.querySelector('[data-error="name"]');
     const whyError = form.querySelector('[data-error="why"]');
     const nextBtn = form.querySelector('[data-next]');
     const prevBtn = form.querySelector('[data-prev]');
+
+    if (hasSubmitted()) {
+      showFail();
+      return;
+    }
 
     setStep(1);
 
@@ -59,7 +76,20 @@
         } else {
           thoughts.focus();
         }
+        return;
       }
+
+      const firstTime = form.querySelector(
+        'input[name="first_time"]:checked'
+      ).value;
+      if (firstTime !== 'yes') {
+        e.preventDefault();
+        markSubmitted();
+        showFail();
+        return;
+      }
+
+      markSubmitted();
     });
 
     function setStep(n) {
@@ -67,6 +97,11 @@
       steps.forEach((s) => {
         s.hidden = Number(s.dataset.step) !== n;
       });
+    }
+
+    function showFail() {
+      steps.forEach((s) => (s.hidden = true));
+      if (fail) fail.hidden = false;
     }
   }
 })();
